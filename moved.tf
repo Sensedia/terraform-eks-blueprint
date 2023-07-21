@@ -10,8 +10,16 @@ moved {
 
 # Metrics Server
 moved {
+  from = time_sleep.metrics
+  to   = time_sleep.metrics_server[0]
+}
+moved {
   from = time_sleep.metrics_server[0]
   to   = module.metrics_server["metrics-server"].time_sleep.this[0]
+}
+moved {
+  from = helm_release.metrics-server
+  to   = helm_release.metrics_server[0]
 }
 moved {
   from = helm_release.metrics_server[0]
@@ -29,6 +37,18 @@ moved {
 }
 
 # AWS Load Balancer Controller
+moved {
+  from = helm_release.aws-load-balancer-controller
+  to   = helm_release.aws_load_balancer_controller[0]
+}
+moved {
+  from = time_sleep.aws-load-balancer-controller
+  to   = time_sleep.aws_load_balancer_controller[0]
+}
+moved {
+  from = module.load_balancer_controller_irsa_role
+  to   = module.load_balancer_controller_irsa_role[0]
+}
 moved {
   from = time_sleep.aws_load_balancer_controller[0]
   to   = module.aws_load_balancer_controller["aws-load-balancer-controller"].time_sleep.this[0]
@@ -49,6 +69,7 @@ moved {
   from = module.load_balancer_controller_irsa_role[0].aws_iam_role_policy_attachment.load_balancer_controller[0]
   to   = module.aws_load_balancer_controller["aws-load-balancer-controller"].module.irsa_role[0].aws_iam_role_policy_attachment.load_balancer_controller[0]
 }
+
 
 # Cluster Autoscaler
 moved {
@@ -108,9 +129,18 @@ moved {
 ###########
 # Traefik #
 ###########
+
+moved {
+  from = time_sleep.traefik
+  to   = time_sleep.traefik[0]
+}
 moved {
   from = time_sleep.traefik[0]
   to   = module.traefik["traefik"].time_sleep.this[0]
+}
+moved {
+  from = helm_release.traefik-ingress
+  to   = helm_release.traefik[0]
 }
 moved {
   from = helm_release.traefik[0]
@@ -145,6 +175,7 @@ moved {
   to   = module.velero["velero"].module.irsa_role[0].aws_iam_role_policy_attachment.this["velero"]
 }
 
+
 ###########
 # VPC CNI #
 ###########
@@ -158,6 +189,10 @@ moved {
 #   to   = module.vpc_cni["vpc-cni"].aws_eks_addon.this[0]
 # }
 moved {
+  from = module.vpc_cni_ipv4_irsa_role
+  to   = module.vpc_cni_ipv4_irsa_role[0]
+}
+moved {
   from = module.vpc_cni_ipv4_irsa_role[0].aws_iam_policy.vpc_cni[0]
   to   = module.vpc_cni["vpc-cni"].module.irsa_role[0].aws_iam_policy.vpc_cni[0]
 }
@@ -170,8 +205,29 @@ moved {
   to   = module.vpc_cni["vpc-cni"].module.irsa_role[0].aws_iam_role_policy_attachment.vpc_cni[0]
 }
 
-
-# AWS EBS CSI Driver
+######################
+# AWS EBS CSI Driver #
+######################
+moved {
+  from = time_sleep.aws_ebs_csi_driver
+  to   = time_sleep.aws_ebs_csi_driver[0]
+}
+moved {
+  from = aws_eks_addon.aws_ebs_csi_driver
+  to   = aws_eks_addon.aws_ebs_csi_driver[0]
+}
+moved {
+  from = module.aws_ebs_csi_driver_irsa.aws_iam_policy.ebs_csi[0]
+  to   = module.aws_ebs_csi_driver_irsa[0].aws_iam_policy.ebs_csi[0]
+}
+moved {
+  from = module.aws_ebs_csi_driver_irsa.aws_iam_role.this[0]
+  to   = module.aws_ebs_csi_driver_irsa[0].aws_iam_role.this[0]
+}
+moved {
+  from = module.aws_ebs_csi_driver_irsa.aws_iam_role_policy_attachment.ebs_csi[0]
+  to   = module.aws_ebs_csi_driver_irsa[0].aws_iam_role_policy_attachment.ebs_csi[0]
+}
 moved {
   from = time_sleep.aws_ebs_csi_driver[0]
   to   = module.aws_ebs_csi_driver["aws-ebs-csi-driver"].time_sleep.this[0]
@@ -326,4 +382,13 @@ moved {
 moved {
   from = kubectl_manifest.view_rbac["/apis/rbac.authorization.k8s.io/v1/clusterrolebindings/view"]
   to   = module.sensedia_rbac.kubectl_manifest.view_rbac["/apis/rbac.authorization.k8s.io/v1/clusterrolebindings/view"]
+}
+
+
+#############
+# Karpenter #
+#############
+moved {
+  from = module.karpenter_irsa
+  to   = module.karpenter_irsa[0]
 }
