@@ -6,7 +6,9 @@ repos:
       - id: terraform_validate
       - id: terraform_docs
         args:
-          - '--args=--lockfile=false'
+          - --hook-config=--path-to-file=README.md
+          - --hook-config=--add-to-existing-file=true
+          - --hook-config=--create-file-if-not-exist=true
       - id: terraform_tflint
         args:
           - '--args=--only=terraform_deprecated_interpolation'
