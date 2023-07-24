@@ -25,7 +25,7 @@ output "cluster_iam_role_arn" {
 
 output "region" {
   description = "AWS region."
-  value       = var.region
+  value       = data.aws_region.current.name
 }
 
 output "oidc_provider_arn" {

@@ -1,12 +1,6 @@
 ################################################################################
 # general
 ################################################################################
-
-variable "region" {
-  description = "AWS region. Reference: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions."
-  type        = string
-}
-
 variable "tags" {
   description = "A map of tags to add to all resources."
   type        = map(string)
@@ -115,7 +109,6 @@ variable "vpc_cidr_block" {
 ################################################################################
 # CloudWatch Log Group
 ################################################################################
-
 variable "cloudwatch_log_group_retention_in_days" {
   description = "Number of days to retain log events. Default retention - 7 days."
   type        = number
@@ -126,7 +119,6 @@ variable "cloudwatch_log_group_retention_in_days" {
 ################################################################################
 # Cluster Security Group
 ################################################################################
-
 variable "cluster_security_group_additional_rules" {
   description = "List of additional security group rules to add to the cluster security group created. Set `source_node_security_group = true` inside rules to set the `node_security_group` as source."
   type        = any
@@ -224,9 +216,9 @@ variable "self_managed_node_group_defaults" {
 }
 
 
-######################
-# Addons
-######################
+################################################################################
+# Kubernetes Addons
+################################################################################
 variable "addons" {
   description = "Map of cluster addon configurations to enable for the cluster. Addon name can be the map keys or set with `name`"
   type        = any

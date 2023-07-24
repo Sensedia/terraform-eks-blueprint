@@ -30,14 +30,14 @@
 | <a name="module_cluster_autoscaler"></a> [cluster\_autoscaler](#module\_cluster\_autoscaler) | ./modules/addons/cluster-autoscaler | n/a |
 | <a name="module_coredns"></a> [coredns](#module\_coredns) | ./modules/addons/coredns | n/a |
 | <a name="module_custom_namespaces"></a> [custom\_namespaces](#module\_custom\_namespaces) | ./modules/addons/custom-namespaces | n/a |
-| <a name="module_discovery_tool"></a> [discovery\_tool](#module\_discovery\_tool) | ./modules/addons/discovery-tool | n/a |
+| <a name="module_discovery_tool"></a> [discovery\_tool](#module\_discovery\_tool) | ./modules/addons/sensedia/discovery-tool | n/a |
 | <a name="module_eks"></a> [eks](#module\_eks) | terraform-aws-modules/eks/aws | ~> 19.15 |
 | <a name="module_fluentbit"></a> [fluentbit](#module\_fluentbit) | ./modules/addons/fluentbit | n/a |
 | <a name="module_karpenter"></a> [karpenter](#module\_karpenter) | ./modules/addons/karpenter | n/a |
 | <a name="module_kube_proxy"></a> [kube\_proxy](#module\_kube\_proxy) | ./modules/addons/kube-proxy | n/a |
 | <a name="module_metrics_server"></a> [metrics\_server](#module\_metrics\_server) | ./modules/addons/metrics-server | n/a |
 | <a name="module_node_termination_handler"></a> [node\_termination\_handler](#module\_node\_termination\_handler) | ./modules/addons/node-termination-handler | n/a |
-| <a name="module_sensedia_rbac"></a> [sensedia\_rbac](#module\_sensedia\_rbac) | ./modules/sensedia/rbac | n/a |
+| <a name="module_sensedia_rbac"></a> [sensedia\_rbac](#module\_sensedia\_rbac) | ./modules/addons/sensedia/rbac | n/a |
 | <a name="module_traefik"></a> [traefik](#module\_traefik) | ./modules/addons/traefik | n/a |
 | <a name="module_velero"></a> [velero](#module\_velero) | ./modules/addons/velero | n/a |
 | <a name="module_vpc_cni"></a> [vpc\_cni](#module\_vpc\_cni) | ./modules/addons/vpc-cni | n/a |
@@ -77,7 +77,6 @@
 | <a name="input_node_security_group_additional_rules"></a> [node\_security\_group\_additional\_rules](#input\_node\_security\_group\_additional\_rules) | List of additional security group rules to add to the node security group created. Set `source_cluster_security_group = true` inside rules to set the `cluster_security_group` as source. | `any` | `{}` | no |
 | <a name="input_node_security_group_enable_recommended_rules"></a> [node\_security\_group\_enable\_recommended\_rules](#input\_node\_security\_group\_enable\_recommended\_rules) | Determines whether to enable recommended security group rules for the node security group created. This includes node-to-node TCP ingress on ephemeral ports and allows all egress traffic. | `bool` | `true` | no |
 | <a name="input_node_security_group_tags"></a> [node\_security\_group\_tags](#input\_node\_security\_group\_tags) | A map of additional tags to add to the node security group created. | `map(string)` | `{}` | no |
-| <a name="input_region"></a> [region](#input\_region) | AWS region. Reference: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions. | `string` | n/a | yes |
 | <a name="input_self_managed_node_group_defaults"></a> [self\_managed\_node\_group\_defaults](#input\_self\_managed\_node\_group\_defaults) | Map of self-managed node group default configurations | `any` | `{}` | no |
 | <a name="input_self_managed_node_groups"></a> [self\_managed\_node\_groups](#input\_self\_managed\_node\_groups) | Map of self-managed node group definitions to create | `any` | `{}` | no |
 | <a name="input_sensedia_rbac"></a> [sensedia\_rbac](#input\_sensedia\_rbac) | Sensedia RBAC to give access to developers. | `any` | `{}` | no |
