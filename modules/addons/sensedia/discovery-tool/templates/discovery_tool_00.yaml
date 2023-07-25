@@ -1,7 +1,0 @@
----
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: discovery-tool
-  labels:
-    app.kubernetes.io/name: discovery-tool
